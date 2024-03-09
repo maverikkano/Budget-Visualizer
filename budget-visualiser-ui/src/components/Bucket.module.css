@@ -1,0 +1,34 @@
+.bucketContainer{
+    display: flex;
+    justify-content: center;
+
+}
+
+.bucket {
+    width: 13rem;
+    height: 10rem;
+    position: relative;
+    display: flex;
+    align-items: end;
+}
+
+.bucketTitle{
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.fill {
+    background-color: blue;
+    width: 100%;
+    height: 0%;     /* Used to control fill level */
+    transition: height 0.5s ease-in-out;
+}
+
+.bucketIcon {
+    position: absolute; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}

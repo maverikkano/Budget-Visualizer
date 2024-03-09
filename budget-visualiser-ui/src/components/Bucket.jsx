@@ -1,7 +1,6 @@
 import React from "react";
 import BucketImg from "../artifacts/Bucket.png";
 import styles from "./Bucket.module.css";
-import 'bootstrap/dist/css/bootstrap.min.css';
 
 function Bucket(props) {
 

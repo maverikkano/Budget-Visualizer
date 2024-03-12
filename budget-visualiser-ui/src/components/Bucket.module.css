@@ -9,12 +9,12 @@
     height: 10rem;
     position: relative;
     display: flex;
-    align-items: end;
+    align-items: flex-end;
 }
 
-.bucketTitle{
+.bucketText{
     text-align: center;
-    margin-bottom: 2rem;
+    /* margin-bottom: 2rem; */
 }
 
 .fill {
@@ -31,4 +31,8 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+}
+
+.bucketSize{
+    text-align: center;
 }

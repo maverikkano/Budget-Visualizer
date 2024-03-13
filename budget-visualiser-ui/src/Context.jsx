@@ -1,19 +1,20 @@
 import React, { createContext, useContext, useState } from 'react';
 
-const BucketDataListContext = createContext();
+const BucketContext = createContext();
 
-const BucketDataListProvider = ({ children }) => {
+const BucketProvider = ({ children }) => {
   const [bucketDataList, setBucketDataList] = useState([]);
-
+  
   return (
-    <BucketDataListContext.Provider value={{ bucketDataList: bucketDataList, setBucketDataList: setBucketDataList }}>
+    <BucketContext.Provider value={{ 
+        bucketDataList: bucketDataList, setBucketDataList: setBucketDataList }}>
       {children}
-    </BucketDataListContext.Provider>
+    </BucketContext.Provider>
   );
 };
 
-const useBucketDataList = () => {
-  return useContext(BucketDataListContext);
+const useBucket = () => {
+  return useContext(BucketContext);
 };
 
-export { BucketDataListProvider, useBucketDataList };
+export { BucketProvider, useBucket };

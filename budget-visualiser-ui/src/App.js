@@ -1,7 +1,9 @@
 import { useState } from 'react';
 import './App.css';
 import PriorityRow from './components/PriorityRow';
-import { useBucketDataList } from './Context';
+import { useBucket } from './Context';
+import { generateBucketReport, handleBucketFill } from './utils/bucketUtils';
+import Bucket from './components/Bucket';
 
 function App() {
 
@@ -9,7 +11,8 @@ function App() {
 
   const [priorityKey, setPriorityKey] = useState(1);
   const [priorityRowList, setPriorityRowList] = useState([]);
-  const {bucketDataList} = useBucketDataList();
+  const {bucketDataList, setBucketDataList} = useBucket();
+  
 
   // States ends
 
@@ -22,11 +25,18 @@ function App() {
     handlePriorityKeyIncrease();
 
     // Append Row element to the list
-    setPriorityRowList([...priorityRowList, <PriorityRow priority={priorityKey} key={priorityKey} />])
+    setPriorityRowList([...priorityRowList, 
+      <PriorityRow priority={priorityKey} key={priorityKey} />])
   };
 
   const handleSaveInvestmentConfig = () => {
-    alert("save");
+
+    let corpus = parseInt(prompt("Please enter your saving corpus (₹)"));
+
+    generateBucketReport(bucketDataList, setBucketDataList, corpus);
+
+    // handleBucketFill(bucketDataList, setBucketDataList, setBucketDataList);
+
   }
 
   // Handlers end
@@ -40,16 +50,18 @@ function App() {
 
           <h1>Budget Visualizer</h1>
 
-          <button className='btn btn-primary' id="createPriorityBtn" onClick={handleCreatePriorityRow}>Create Priority</button>
+          <button className='btn btn-dark' id="createPriorityBtn" onClick={handleCreatePriorityRow}>Create Priority</button>
           
           <div className="priorityContainer">
             {priorityRowList}
           </div>
 
           {bucketDataList.length > 0 &&
-          <button className='btn btn-primary' onClick={handleSaveInvestmentConfig}
+          
+          <button className='btn btn-dark' onClick={handleSaveInvestmentConfig}
             style={{"float":"inline-end"}}>
             Save my investment configuration</button>}
+          
 
         </div>
       </div>

@@ -4,14 +4,14 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { BucketDataListProvider } from './Context';
+import { BucketProvider } from './Context';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <BucketDataListProvider>
+    <BucketProvider>
       <App />
-    </BucketDataListProvider>
+    </BucketProvider>
 
   </React.StrictMode>
 );

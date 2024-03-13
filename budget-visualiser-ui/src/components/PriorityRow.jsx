@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import { useBucketDataList } from "../Context";
+import { useBucket } from "../Context";
 import styles from "./PriorityRow.module.css";
 import Bucket from "./Bucket";
 
@@ -12,15 +12,15 @@ function PriorityRow(props) {
         title: "",
         bucketSize: 0,
         currentBalance: 0,
-        newBalance: 0,
         priority: 0,
+        fillPercent:0,
         fillColor: "blue"
     };
 
     // States
     const [bucketProps, setBucketProps] = useState(bucketPropsTemplate);  
     
-    const {bucketDataList, setBucketDataList} = useBucketDataList();    // Imported from context provider
+    const {bucketDataList, setBucketDataList} = useBucket();    // Imported from context provider
 
     // Handlers begin
     const handleBucketFormSubmit = (event) => {
@@ -66,7 +66,7 @@ function PriorityRow(props) {
                         placeholder="amount" min={0} onChange={handleBucketFormChange} />
                     </div>
 
-                    <button type="button" className='btn btn-primary my-2' onClick={handleBucketFormSubmit}>Create Bucket</button>
+                    <button type="button" className='btn btn-dark my-2' onClick={handleBucketFormSubmit}>Create Bucket</button>
                 </form>
             </div>
 

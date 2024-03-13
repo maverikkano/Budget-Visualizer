@@ -18,7 +18,7 @@
 }
 
 .fill {
-    background-color: blue;
+    background-color: blueviolet;
     width: 100%;
     height: 0%;     /* Used to control fill level */
     transition: height 0.5s ease-in-out;
@@ -35,4 +35,8 @@
 
 .bucketSize{
     text-align: center;
+}
+
+.deleteIcon {
+    float: inline-end;
 }

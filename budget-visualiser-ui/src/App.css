@@ -14,3 +14,7 @@ h1 {
 #createPriorityBtn {
     float: inline-end;
 }
+
+input{
+    margin: 0.2rem 0 !important;
+}

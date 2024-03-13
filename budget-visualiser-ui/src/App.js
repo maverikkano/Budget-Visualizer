@@ -1,8 +1,7 @@
 import { useState } from 'react';
 import './App.css';
 import PriorityRow from './components/PriorityRow';
-import { BucketDataListProvider } from './Context';
-
+import { useBucketDataList } from './Context';
 
 function App() {
 
@@ -10,6 +9,7 @@ function App() {
 
   const [priorityKey, setPriorityKey] = useState(1);
   const [priorityRowList, setPriorityRowList] = useState([]);
+  const {bucketDataList} = useBucketDataList();
 
   // States ends
 
@@ -25,11 +25,14 @@ function App() {
     setPriorityRowList([...priorityRowList, <PriorityRow priority={priorityKey} key={priorityKey} />])
   };
 
+  const handleSaveInvestmentConfig = () => {
+    alert("save");
+  }
+
   // Handlers end
   
   return (
     
-    <BucketDataListProvider>
 
       <div className="App">
 
@@ -43,9 +46,13 @@ function App() {
             {priorityRowList}
           </div>
 
+          {bucketDataList.length > 0 &&
+          <button className='btn btn-primary' onClick={handleSaveInvestmentConfig}
+            style={{"float":"inline-end"}}>
+            Save my investment configuration</button>}
+
         </div>
       </div>
-    </BucketDataListProvider>
   );
 }
 

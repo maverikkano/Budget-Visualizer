@@ -3,10 +3,10 @@ import React, { createContext, useContext, useState } from 'react';
 const BucketDataListContext = createContext();
 
 const BucketDataListProvider = ({ children }) => {
-  const [bucketDataList, setbucketDataList] = useState([]);
+  const [bucketDataList, setBucketDataList] = useState([]);
 
   return (
-    <BucketDataListContext.Provider value={{ bucketDataList: bucketDataList, setBucketDataList: setbucketDataList }}>
+    <BucketDataListContext.Provider value={{ bucketDataList: bucketDataList, setBucketDataList: setBucketDataList }}>
       {children}
     </BucketDataListContext.Provider>
   );
@@ -15,5 +15,5 @@ const BucketDataListProvider = ({ children }) => {
 const useBucketDataList = () => {
   return useContext(BucketDataListContext);
 };
-<button></button>
+
 export { BucketDataListProvider, useBucketDataList };

@@ -18,8 +18,6 @@ function PriorityRow(props) {
     };
 
     // States
-    const [bucketList, setBucketList] = useState([]);
-    const [bucketKey, setBucketKey] = useState(0);
     const [bucketProps, setBucketProps] = useState(bucketPropsTemplate);  
     
     const {bucketDataList, setBucketDataList} = useBucketDataList();    // Imported from context provider
@@ -29,22 +27,18 @@ function PriorityRow(props) {
         const { title, bucketSize } = bucketProps;
         bucketProps.priority = priorityNo;
         bucketProps.bucketSize = parseInt(bucketProps.bucketSize);
-
-        let bucketElement = <Bucket init={bucketProps} key={bucketKey} />;
     
         if (title !== "" && bucketSize > 0) {
-            setBucketKey((prevKey) => prevKey + 1);
-            setBucketList([...bucketList, bucketElement]);
-            setBucketDataList([...bucketDataList, [bucketProps]]);
+            setBucketDataList([...bucketDataList, bucketProps]);
             setBucketProps(bucketPropsTemplate);
         }
+
     }
 
     const handleBucketFormChange = (event) => {
         const { name, value } = event.target;
         setBucketProps((prevState) => ({ ...prevState, [name]: value }));
     };
-
 
     // handlers end
 
@@ -76,9 +70,13 @@ function PriorityRow(props) {
                 </form>
             </div>
 
-            {bucketList}
+            {bucketDataList.map((bucketProps, index) => (
+                priorityNo === bucketProps.priority &&
+                <Bucket init={bucketProps} key={index} />
+            ))}
 
             <hr />
+
         </div>
     );
 
